@@ -1,3 +1,22 @@
+<script>
+export default {
+  props: {
+    menuItem: {
+      type: Object,
+      default: () => {},
+    },
+    subgroup: {
+      type: Boolean,
+      default: false,
+    },
+    small: {
+      type: Boolean,
+      default: false,
+    },
+  },
+}
+</script>
+
 <template>
   <div>
     <v-list-item
@@ -29,10 +48,11 @@
       :to="menuItem.link"
       link
     >
-
-      <template v-slot:activator>
+      <template #activator>
         <v-list-item-icon v-if="!subgroup">
-          <v-icon :small="small">{{ menuItem.icon || 'mdi-circle-medium' }}</v-icon>
+          <v-icon :small="small">
+            {{ menuItem.icon || 'mdi-circle-medium' }}
+          </v-icon>
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
@@ -41,35 +61,7 @@
         </v-list-item-content>
       </template>
 
-      <slot></slot>
-
+      <slot />
     </v-list-group>
   </div>
 </template>
-
-<script>
-/*
-|---------------------------------------------------------------------
-| Navigation Menu Item Component
-|---------------------------------------------------------------------
-|
-| Navigation items for the NavMenu component
-|
-*/
-export default {
-  props: {
-    menuItem: {
-      type: Object,
-      default: () => {}
-    },
-    subgroup: {
-      type: Boolean,
-      default: false
-    },
-    small: {
-      type: Boolean,
-      default: false
-    }
-  }
-}
-</script>

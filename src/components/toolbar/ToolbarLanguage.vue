@@ -1,5 +1,12 @@
 <script>
+import { useDisplay } from 'vuetify'
 export default {
+  setup() {
+    // Destructure only the keys we want to use
+    const { smAndDown, mdAndUp } = useDisplay()
+
+    return { smAndDown, mdAndUp }
+  },
   props: {
     // Show dropdown arrow
     showArrow: {
@@ -42,9 +49,9 @@ export default {
     transition="slide-y-transition"
   >
     <template #activator="{ on }">
-      <v-btn text :icon="$vuetify.breakpoint.smAndDown" v-on="on">
-        <FlagIcon :round="$vuetify.breakpoint.smAndDown" :flag="currentLocale.flag" />
-        <span v-show="$vuetify.breakpoint.mdAndUp && showLabel" :class="[$vuetify.rtl ? 'mr-1' : 'ml-1']">{{ currentLocale.label }}</span>
+      <v-btn text :icon="smAndDown" v-on="on">
+        <FlagIcon :round="smAndDown" :flag="currentLocale.flag" />
+        <span v-show="mdAndUp && showLabel" :class="[$vuetify.rtl ? 'mr-1' : 'ml-1']">{{ currentLocale.label }}</span>
         <v-icon v-if="showArrow" right>
           mdi-chevron-down
         </v-icon>

@@ -1,6 +1,11 @@
+<script setup>
+import { toolbar } from '~/configs/toolbar'
+const menu = toolbar.user
+</script>
+
 <template>
   <v-menu offset-y left transition="slide-y-transition">
-    <template v-slot:activator="{ on }">
+    <template #activator="{ on }">
       <v-btn icon class="elevation-2" v-on="on">
         <v-badge
           color="success"
@@ -10,7 +15,7 @@
           offset-y="10"
         >
           <v-avatar size="40">
-            <v-img src="/images/avatars/avatar1.svg"></v-img>
+            <v-img src="/images/avatars/avatar1.svg" />
           </v-avatar>
         </v-badge>
       </v-btn>
@@ -27,18 +32,22 @@
         link
       >
         <v-list-item-icon>
-          <v-icon small :class="{ 'grey--text': item.disabled }">{{ item.icon }}</v-icon>
+          <v-icon small :class="{ 'grey--text': item.disabled }">
+            {{ item.icon }}
+          </v-icon>
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>{{ item.key ? $t(item.key) : item.text }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider class="my-1"></v-divider>
+      <v-divider class="my-1" />
 
       <v-list-item to="/auth/signin">
         <v-list-item-icon>
-          <v-icon small>mdi-logout-variant</v-icon>
+          <v-icon small>
+            mdi-logout-variant
+          </v-icon>
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>{{ $t('menu.logout') }}</v-list-item-title>
@@ -47,22 +56,3 @@
     </v-list>
   </v-menu>
 </template>
-
-<script>
-import config from '../../configs'
-/*
-|---------------------------------------------------------------------
-| Toolbar User Component
-|---------------------------------------------------------------------
-|
-| Quickmenu for user menu shortcuts on the toolbar
-|
-*/
-export default {
-  data() {
-    return {
-      menu: config.toolbar.user
-    }
-  }
-}
-</script>

@@ -13,6 +13,7 @@ import Inspect from 'vite-plugin-inspect'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
 import Shiki from 'markdown-it-shiki'
+import vuetify from 'vite-plugin-vuetify'
 
 export default defineConfig({
   resolve: {
@@ -21,11 +22,25 @@ export default defineConfig({
     },
   },
 
+  css: {
+    preprocessorOptions: {
+      sass: {
+        additionalData: '@import "./src/styles/scss/vuetify/variables";',
+      },
+      scss: {
+        additionalData: '@import "./src/styles/scss/vuetify/variables";',
+      },
+    },
+  },
+
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/],
       reactivityTransform: true,
     }),
+    vuetify({
+      autoImport: true,
+    }), // Enabled by default
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
@@ -144,6 +159,11 @@ export default defineConfig({
     script: 'async',
     formatting: 'minify',
     onFinished() { generateSitemap() },
+    setupFiles: 'vuetify.config.js',
+    deps: {
+      inline: ['vuetify'],
+    },
+    globals: true,
   },
 
   ssr: {
