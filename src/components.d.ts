@@ -7,10 +7,21 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    CopyLabel: typeof import('./components/common/CopyLabel.vue')['default']
     Counter: typeof import('./components/Counter.vue')['default']
+    FlagIcon: typeof import('./components/common/FlagIcon.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
+    MainMenu: typeof import('./components/navigation/MainMenu.vue')['default']
+    NavMenu: typeof import('./components/navigation/NavMenu.vue')['default']
+    NavMenuItem: typeof import('./components/navigation/NavMenuItem.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ToolbarApps: typeof import('./components/toolbar/ToolbarApps.vue')['default']
+    ToolbarCurrency: typeof import('./components/toolbar/ToolbarCurrency.vue')['default']
+    ToolbarLanguage: typeof import('./components/toolbar/ToolbarLanguage.vue')['default']
+    ToolbarNotifications: typeof import('./components/toolbar/ToolbarNotifications.vue')['default']
+    ToolbarUser: typeof import('./components/toolbar/ToolbarUser.vue')['default']
+    TrendPercent: typeof import('./components/common/TrendPercent.vue')['default']
   }
 }
